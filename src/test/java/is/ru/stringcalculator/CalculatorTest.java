@@ -36,5 +36,12 @@ public class CalculatorTest {
 	public void testNumberWithOnlyNewline(){
 	assertEquals(7, Calculator.add("1\n3\n3"));
 	}
-
+	@Test
+	public void testDifferentDelimiter(){
+	assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+	@Test
+	public void testDIfferentDelimeterMultipleNumbers(){
+	assertEquals(8, Calculator.add("//a\n2a2a4"));
+	}
 }
