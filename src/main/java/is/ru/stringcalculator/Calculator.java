@@ -6,13 +6,18 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		
 		else if(text.contains(",")|| text.contains("\n")){
-			if(text.substring(0, 2).equals("//"))
+
+		if(text.substring(0, 2).equals("//"))
 			{
 				return sum(splitDelimeters(text));
 			}
+		else
+		
 			return sum(splitNumbers(text));
 		}
+	
 		else
 			return 1;
 	}
@@ -35,8 +40,17 @@ public class Calculator {
 
    	private static int sum(String[] numbers){
  		int total = 0;
+		String invalid = "";
         	for(String number : numbers){
-			total += toInt(number);
+		if(toInt(number) < 0)
+		{
+			invalid += number;
+		}
+		total += toInt(number);
+		}
+		if(!invalid.equals(""))
+		{
+			throw new IllegalArgumentException("Negatives not allowed:" + invalid);
 		}
 		return total;
     }
