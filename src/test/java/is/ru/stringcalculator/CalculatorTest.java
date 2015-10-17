@@ -67,4 +67,16 @@ public class CalculatorTest {
 		throw ex;
 	}
 	}
+	@Test
+	public void testBiggerThan1000(){
+		assertEquals(2, Calculator.add("1001,2")); 
+	}
+	@Test
+	public void testMultipleBiggerThan1000(){
+		assertEquals(4, Calculator.add("1\n1005,3,2800"));
+	}
+	@Test
+	public void testMultipleBiggerThan1000Delimeter(){
+		assertEquals(8, Calculator.add("//b\n4b2b1002b2b2800"));
+	}
 }
