@@ -42,11 +42,14 @@ public class Calculator {
  		int total = 0;
 		String invalid = "";
         	for(String number : numbers){
-		if(toInt(number) < 0)
-		{
-			invalid += number;
-		}
-		total += toInt(number);
+			if(toInt(number) < 0)
+			{	
+				invalid += number;
+			}
+			if(toInt(number) <= 1000)
+			{
+				total += toInt(number);
+			}
 		}
 		if(!invalid.equals(""))
 		{
