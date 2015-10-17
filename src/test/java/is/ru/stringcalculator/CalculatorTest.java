@@ -44,4 +44,27 @@ public class CalculatorTest {
 	public void testDIfferentDelimeterMultipleNumbers(){
 	assertEquals(8, Calculator.add("//a\n2a2a4"));
 	}
+	@Test(expected = IllegalArgumentException.class)
+	public void testOneNegativeNumber(){
+	try{
+		Calculator.add("-1,2");
+	}
+	catch (IllegalArgumentException ex)
+	{
+	assertEquals("Negatives not allowed:-1", ex.getMessage() );
+		throw ex;
+	}
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testMultipleNegativeNumber(){
+	try{
+		Calculator.add("2,-4,3,-5");
+	}
+	catch (IllegalArgumentException ex)
+	{
+		assertEquals("Negatives not allowed:-4-5", ex.getMessage());
+		throw ex;
+	}
+	}
 }
