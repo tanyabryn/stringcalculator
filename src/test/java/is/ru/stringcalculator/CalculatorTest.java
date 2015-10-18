@@ -79,4 +79,16 @@ public class CalculatorTest {
 	public void testMultipleBiggerThan1000Delimeter(){
 		assertEquals(8, Calculator.add("//b\n4b2b1002b2b2800"));
 	}
+	@Test
+	public void testDelimeterOfAnyLenghtMetaChar(){
+		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
+	@Test
+	public void testDelimeterOfAnyLenght(){
+		assertEquals(7, Calculator.add("//[aaaa]\n2aaaa2aaaa3"));
+	}
+	@Test
+	public void testDelimeterMetaChar(){
+		assertEquals(8, Calculator.add("//*\n4*4"));
+	}	
 }
