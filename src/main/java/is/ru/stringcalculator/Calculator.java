@@ -28,7 +28,25 @@ public class Calculator {
 	
 	private static String[] splitDelimeters(String numbers){
 		int n = numbers.indexOf("\n");
-		String delimeter = numbers.substring(2, n);
+		String first = "";
+		String delimeter = "";
+		if(numbers.substring(2, 3).equals("["))
+		{
+			first = numbers.substring(3,4);
+			if(first.matches("[-+*/.?|$^]"))
+			{
+				numbers = numbers.replaceAll("\\" + first, "a");
+			}
+			delimeter = numbers.substring(3, numbers.indexOf("]"));
+			
+		}			
+		else
+		{
+			first = numbers.substring(2,3);
+			if(first.matches("[-+*/.?|$^]"))
+				numbers = numbers.replaceAll("\\" + first, "a");
+			delimeter = numbers.substring(2,n);
+		}
 		String toSplit = numbers.substring(n+1);
 		
 		return toSplit.split(delimeter);
