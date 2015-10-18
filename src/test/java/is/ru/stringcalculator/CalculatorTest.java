@@ -103,4 +103,13 @@ public class CalculatorTest {
 	public void testThreeDelimeters(){
 		assertEquals(4, Calculator.add("//[*][b][%]\n1*1b1%1"));
 	}
+	@Test
+	public void testMultipleDelimetersOfAnyLenght(){
+		assertEquals(6, Calculator.add("//[***][%%%]\n1***2%%%3"));
+	}
+	@Test
+	public void testThreeDelimetersOfAnyLenght(){
+		assertEquals(8, Calculator.add("//[**][;;;][%]\n2**2;;;2%2"));
+	}
 }
+

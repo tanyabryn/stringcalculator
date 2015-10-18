@@ -37,19 +37,19 @@ public class Calculator {
 			for(int i = 0; i < amount; i++)
 			{
 				first = numbers.substring(1,2);
-				String partDelimeter = "";
+				String deli = "";
 				if(first.matches("[-+*/.?|$^]"))
 				{	
 					numbers = numbers.replaceAll("\\" + first, "a");
 				}
-				partDelimeter = numbers.substring(1,numbers.indexOf("]"));
+				deli = numbers.substring(1,numbers.indexOf("]"));
 				
-				if( 2 >  amount)
-					delimeter += partDelimeter;
-				else if(i < amount -1)
-					delimeter += "(" + partDelimeter + ")" + "|";
+				if(i < amount -1)
+					delimeter += "(" + deli + ")" +  "|";
+				else if(amount < 2)
+					delimeter += deli;
 				else
-					delimeter += "(" + partDelimeter + ")";
+					delimeter += "(" + deli + ")";
 				numbers = numbers.substring(numbers.indexOf("]") + 1); 
 			}	
 			n = numbers.indexOf("\n");
