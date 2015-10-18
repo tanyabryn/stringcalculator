@@ -27,25 +27,40 @@ public class Calculator {
 	}
 	
 	private static String[] splitDelimeters(String numbers){
-		int n = numbers.indexOf("\n");
+		int n = 0;
 		String first = "";
 		String delimeter = "";
-		if(numbers.substring(2, 3).equals("["))
+		numbers = numbers.substring(2);
+		if(numbers.substring(0,1).equals("["))
 		{
-			first = numbers.substring(3,4);
-			if(first.matches("[-+*/.?|$^]"))
+			int amount = numbers.split("]").length -1;
+			for(int i = 0; i < amount; i++)
 			{
-				numbers = numbers.replaceAll("\\" + first, "a");
-			}
-			delimeter = numbers.substring(3, numbers.indexOf("]"));
-			
+				first = numbers.substring(1,2);
+				String partDelimeter = "";
+				if(first.matches("[-+*/.?|$^]"))
+				{	
+					numbers = numbers.replaceAll("\\" + first, "a");
+				}
+				partDelimeter = numbers.substring(1,numbers.indexOf("]"));
+				
+				if( 2 >  amount)
+					delimeter += partDelimeter;
+				else if(i < amount -1)
+					delimeter += "(" + partDelimeter + ")" + "|";
+				else
+					delimeter += "(" + partDelimeter + ")";
+				numbers = numbers.substring(numbers.indexOf("]") + 1); 
+			}	
+			n = numbers.indexOf("\n");
 		}			
 		else
 		{
-			first = numbers.substring(2,3);
+			first = numbers.substring(0,1);
 			if(first.matches("[-+*/.?|$^]"))
 				numbers = numbers.replaceAll("\\" + first, "a");
-			delimeter = numbers.substring(2,n);
+			n = numbers.indexOf("\n");
+			delimeter = numbers.substring(0,n);
 		}
 		String toSplit = numbers.substring(n+1);
 		
