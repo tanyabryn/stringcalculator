@@ -19,7 +19,7 @@ public class Calculator {
 		}
 	
 		else
-			return 1;
+			return toInt(text);
 	}
 	
 	private static int toInt(String number){
