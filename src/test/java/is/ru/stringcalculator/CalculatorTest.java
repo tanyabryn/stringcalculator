@@ -90,5 +90,17 @@ public class CalculatorTest {
 	@Test
 	public void testDelimeterMetaChar(){
 		assertEquals(8, Calculator.add("//*\n4*4"));
+	}
+	@Test
+	public void testMultipleMetaDelimeters(){
+		assertEquals(6, Calculator.add("//[*][?]\n1*2?3"));
+	}
+	@Test 
+	public void testMultipleDelimeters(){
+		assertEquals(7, Calculator.add("//[a][b]\n2a2b3"));
 	}	
+	@Test
+	public void testThreeDelimeters(){
+		assertEquals(4, Calculator.add("//[*][b][%]\n1*1b1%1"));
+	}
 }
